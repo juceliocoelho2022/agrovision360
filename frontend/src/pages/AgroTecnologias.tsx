@@ -23,16 +23,16 @@ export default function AgroTecnologias() {
                 </motion.h2>
 
                 <Row className="justify-content-center mb-5">
-                    <Col md={8} className="text-center">
+                    <Col md={10} className="text-center">
                         <motion.img
                             src="/img/dashboard-agrovision.png"
                             alt="Dashboard AgroVision360"
                             style={{
                                 width: '100%',
+                                maxHeight: '500px',
+                                objectFit: 'contain',
                                 borderRadius: '20px',
-                                boxShadow: '0 0 30px #00ffe5',
-                                maxHeight: '480px',
-                                objectFit: 'cover'
+                                boxShadow: '0 0 30px #00ffe5'
                             }}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
