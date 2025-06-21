@@ -1,69 +1,50 @@
-import { useEffect, useState } from 'react';
-import api from '../services/api';
-import { Container, Table, Form, Button, Row, Col, Alert } from 'react-bootstrap';
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
-interface Safra {
-    id?: number;
-    year: number;
-    estimatedProduction: number;
-    areaPlanted: number;
-    farmId: number;
-}
+const tecnologias = [
+    {
+        titulo: "🌾 Drones Agrícolas",
+        descricao: "Monitoramento aéreo de lavouras, pulverização precisa e mapeamento georreferenciado.",
+        imagem: "https://cdn-icons-png.flaticon.com/512/3639/3639874.png"
+    },
+    {
+        titulo: "📡 IoT no Campo",
+        descricao: "Sensores de solo, umidade e temperatura conectados em tempo real para decisão assertiva.",
+        imagem: "https://cdn-icons-png.flaticon.com/512/1701/1701160.png"
+    },
+    {
+        titulo: "🧠 Inteligência Artificial",
+        descricao: "Modelos preditivos para previsão de safra, detecção de pragas e otimização da produção.",
+        imagem: "https://cdn-icons-png.flaticon.com/512/4149/4149643.png"
+    },
+    {
+        titulo: "📊 Big Data Agrícola",
+        descricao: "Análise massiva de dados para gestão estratégica, produtividade e redução de perdas.",
+        imagem: "https://cdn-icons-png.flaticon.com/512/3011/3011270.png"
+    },
+    {
+        titulo: "🤖 Máquinas Autônomas",
+        descricao: "Tratores e colheitadeiras inteligentes com direção autônoma e conectividade total.",
+        imagem: "https://cdn-icons-png.flaticon.com/512/1632/1632670.png"
+    },
+];
 
-export default function PrevisaoSafra() {
-    const [dados, setDados] = useState<Safra[]>([]);
-    const [nova, setNova] = useState<Safra>({
-        year: new Date().getFullYear(),
-        estimatedProduction: 0,
-        areaPlanted: 0,
-        farmId: 1
-    });
-
-    useEffect(() => {
-        api.get('/previsao?farmId=1').then(res => setDados(res.data));
-    }, []);
-
-    const salvar = async (e: React.FormEvent) => {
-        e.preventDefault();
-        await api.post('/previsao', nova);
-        const res = await api.get('/previsao?farmId=1');
-        setDados(res.data);
-        setNova({ ...nova, estimatedProduction: 0, areaPlanted: 0 });
-    };
-
+export default function AgroTecnologias() {
     return (
-        <Container className="mt-4">
-            <h2>🌾 Previsão de Safra (2025-2035)</h2>
-            <Form onSubmit={salvar} className="mb-4">
-                <Row>
-                    <Col><Form.Control type="number" placeholder="Ano" value={nova.year} onChange={e => setNova({ ...nova, year: +e.target.value })} /></Col>
-                    <Col><Form.Control type="number" placeholder="Área Plantada (ha)" value={nova.areaPlanted} onChange={e => setNova({ ...nova, areaPlanted: +e.target.value })} /></Col>
-                    <Col><Form.Control type="number" placeholder="Produção Estimada (t)" value={nova.estimatedProduction} onChange={e => setNova({ ...nova, estimatedProduction: +e.target.value })} /></Col>
-                    <Col><Button type="submit" variant="success">Adicionar</Button></Col>
-                </Row>
-            </Form>
-
-            <h5>📋 Tabela de Safras</h5>
-            <Table striped bordered hover size="sm">
-                <thead><tr><th>Ano</th><th>Área Plantada</th><th>Produção Estimada</th></tr></thead>
-                <tbody>
-                {dados.map(s => (
-                    <tr key={s.id}><td>{s.year}</td><td>{s.areaPlanted} ha</td><td>{s.estimatedProduction} t</td></tr>
+        <Container className="mt-5">
+            <h2 className="text-success mb-4">🚀 Inovações no Agronegócio</h2>
+            <Row xs={1} md={2} lg={3} className="g-4">
+                {tecnologias.map((tec, idx) => (
+                    <Col key={idx}>
+                        <Card className="h-100 shadow">
+                            <Card.Img variant="top" src={tec.imagem} height="180" style={{ objectFit: 'contain', padding: '10px' }} />
+                            <Card.Body>
+                                <Card.Title className="text-primary">{tec.titulo}</Card.Title>
+                                <Card.Text>{tec.descricao}</Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
                 ))}
-                </tbody>
-            </Table>
-
-            <h5 className="mt-5">📈 Gráfico de Previsão de Produção</h5>
-            <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={dados}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="year" />
-                    <YAxis />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="estimatedProduction" stroke="#2e8b57" strokeWidth={2} />
-                </LineChart>
-            </ResponsiveContainer>
+            </Row>
         </Container>
     );
 }

@@ -16,15 +16,28 @@ function App() {
                 <div className="bg-dark text-white p-3 vh-100" style={{ width: '220px' }}>
                     <h4 className="text-success">🌿 AgroVision</h4>
                     <ul className="nav flex-column mt-4">
-                        <li className="nav-item"><Link to="/producao" className="nav-link text-white">📈 Produção</Link></li>
-                        <li className="nav-item"><Link to="/custos" className="nav-link text-white">💰 Custos</Link></li>
-                        <li className="nav-item"><Link to="/vendas" className="nav-link text-white">🛒 Vendas</Link></li>
-                        <li className="nav-item"><Link to="/estoque" className="nav-link text-white">📦 Estoque</Link></li>
-                        <li className="nav-item"><Link to="/previsao" className="nav-link text-white">📊 Previsão Safra</Link></li>
+                        <li className="nav-item">
+                            <Link to="/producao" className="nav-link text-white">📈 Produção</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/custos" className="nav-link text-white">💰 Custos</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/vendas" className="nav-link text-white">🛒 Vendas</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/estoque" className="nav-link text-white">📦 Estoque</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/previsao" className="nav-link text-white">📊 Previsão Safra</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/agrotecnologias" className="nav-link text-white">🚀 AgroTecnologias</Link>
+                        </li>
                     </ul>
                 </div>
 
-                {/* Conteúdo */}
+                {/* Conteúdo principal */}
                 <div className="p-4 flex-grow-1" style={{ width: '100%' }}>
                     <Routes>
                         <Route path="/" element={<Navigate to="/producao" />} />
@@ -34,7 +47,7 @@ function App() {
                         <Route path="/estoque-grafico" element={<EstoqueGrafico />} />
                         <Route path="/previsao" element={<PrevisaoSafra />} />
                         <Route path="/producao" element={<Producao />} />
-                        <Route path="/tecnologias" element={<AgroTecnologias />} />
+                        <Route path="/agrotecnologias" element={<AgroTecnologias />} />
                     </Routes>
                 </div>
             </div>
