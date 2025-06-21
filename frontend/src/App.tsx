@@ -6,6 +6,7 @@ import PrevisaoSafra from './pages/PrevisaoSafra';
 import Producao from './pages/Producao';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Estoque from "./pages/Estoque";
+import AgroTecnologias from './pages/AgroTecnologias';
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/estoque-grafico" element={<EstoqueGrafico />} />
                         <Route path="/previsao" element={<PrevisaoSafra />} />
                         <Route path="/producao" element={<Producao />} />
+                        <Route path="/tecnologias" element={<AgroTecnologias />} />
                     </Routes>
                 </div>
             </div>
