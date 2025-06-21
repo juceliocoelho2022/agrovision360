@@ -10,6 +10,7 @@ public class PrevisaoSafra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "ano")
     private int year;
     private double estimatedProduction;
     private double areaPlanted;
