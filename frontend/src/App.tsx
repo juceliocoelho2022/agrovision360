@@ -17,6 +17,9 @@ function App() {
                     <h4 className="text-success">🌿 AgroVision</h4>
                     <ul className="nav flex-column mt-4">
                         <li className="nav-item">
+                            <Link to="/agrotecnologias" className="nav-link text-white">🚀 AgroTecnologias</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link to="/producao" className="nav-link text-white">📈 Produção</Link>
                         </li>
                         <li className="nav-item">
@@ -31,9 +34,7 @@ function App() {
                         <li className="nav-item">
                             <Link to="/previsao" className="nav-link text-white">📊 Previsão Safra</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/agrotecnologias" className="nav-link text-white">🚀 AgroTecnologias</Link>
-                        </li>
+
                     </ul>
                 </div>
 
